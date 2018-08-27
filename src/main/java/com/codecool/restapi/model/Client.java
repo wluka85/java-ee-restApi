@@ -14,7 +14,7 @@ public class Client {
     private String name;
     private String email;
 
-    @OneToMany(fetch=FetchType.EAGER)
+    @OneToMany(fetch=FetchType.EAGER, mappedBy = "client")
     private List<Phone> phones = new ArrayList<>();
 
     public Client() {
