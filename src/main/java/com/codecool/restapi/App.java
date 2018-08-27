@@ -1,14 +1,16 @@
 package com.codecool.restapi;
 
+import com.codecool.restapi.model.Client;
 import com.codecool.restapi.model.Phone;
-import com.codecool.restapi.model.Service_info;
-import com.codecool.restapi.model.Users;
+import com.codecool.restapi.model.ServiceInfo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) {
@@ -17,26 +19,39 @@ public class App {
         EntityManager em = emf.createEntityManager();
         populateDb(em);
 
+        em.close();
+        emf.close();
     }
 
     public static void populateDb(EntityManager em) {
 
-        Users users = new Users("Damian", "loveIphones@iphones.com");
+        Client client1 = new Client("Damian", "loveIphones@iphones.com");
+
+        Phone phone1 = new Phone("LG", "newmodel", client1);
+        Phone phone2 = new Phone("iPhone", "s5", client1);
+        List<Phone> phones1 = new ArrayList<>();
+        phones1.add(phone1);
+        phones1.add(phone2);
+
+        client1.setPhones(phones1);
+
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        em.persist(users);
+        em.persist(phone1);
+        em.persist(phone2);
+        em.persist(client1);
         transaction.commit();
-        System.out.println("Created Users.");
+        System.out.println("Created Client.");
 
 
-        Phone phone = new Phone("iphone", "s6");
-        transaction.begin();
-        em.persist(users);
-        transaction.commit();
-        System.out.println("Created phones.");
+//        Phone phone = new Phone("iphone", "s6");
+//        transaction.begin();
+//        em.persist(client);
+//        transaction.commit();
+//        System.out.println("Created phones.");
 
 
-        Service_info service_info = new Service_info("screen smashed", new Date(2,10,2018), "fixed", 500);
+        ServiceInfo service_info = new ServiceInfo("screen smashed", new Date(2,10,2018), "fixed", 500);
         transaction.begin();
         em.persist(service_info);
         transaction.commit();
