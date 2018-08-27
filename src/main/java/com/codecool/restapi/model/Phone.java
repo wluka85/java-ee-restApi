@@ -2,6 +2,8 @@ package com.codecool.restapi.model;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "phones")
@@ -16,6 +18,9 @@ public class Phone {
     @ManyToOne(fetch=FetchType.EAGER)
     private Client client;
 
+    @OneToMany(fetch=FetchType.EAGER, mappedBy = "phone")
+    private List<ServiceInfo> serviceHistory = new ArrayList<>();
+
     public Phone(){
     }
 
@@ -27,6 +32,11 @@ public class Phone {
     public Phone(String brand, String model, Client client) {
         this(brand, model);
         this.client = client;
+    }
+
+    public Phone(String brand, String model, Client client, List<ServiceInfo> serviceHistory) {
+        this(brand, model, client);
+        this.serviceHistory = serviceHistory;
     }
 
     public long getId() {
@@ -59,5 +69,22 @@ public class Phone {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+
+    public List<ServiceInfo> getServiceHistory() {
+        return serviceHistory;
+    }
+
+    public void setServiceHistory(List<ServiceInfo> serviceInfos) {
+        this.serviceHistory = serviceInfos;
+    }
+
+    public void addServiceInfo(ServiceInfo serviceInfo) {
+        serviceHistory.add(serviceInfo);
+    }
+
+    public void removeServiceInfo(ServiceInfo serviceInfo) {
+        serviceHistory.remove(serviceInfo);
     }
 }

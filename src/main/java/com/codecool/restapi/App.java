@@ -29,16 +29,23 @@ public class App {
 
         Phone phone1 = new Phone("LG", "newmodel", client1);
         Phone phone2 = new Phone("iPhone", "s5", client1);
-        List<Phone> phones1 = new ArrayList<>();
-        phones1.add(phone1);
-        phones1.add(phone2);
+//        List<Phone> phones1 = new ArrayList<>();
+        client1.addPhone(phone1);
+        client1.addPhone(phone2);
 
-        client1.setPhones(phones1);
+        ServiceInfo lgFix = new ServiceInfo("bla", new Date(), "blabla", 100, phone1);
+        ServiceInfo iPhoneFix = new ServiceInfo("awful", new Date(), " ", 500, phone2);
+//        List<ServiceInfo> client1ServiceHistory = new ArrayList<>();
+        phone1.addServiceInfo(lgFix);
+        phone2.addServiceInfo(iPhoneFix);
+
 
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         em.persist(phone1);
         em.persist(phone2);
+        em.persist(lgFix);
+        em.persist(iPhoneFix);
         em.persist(client1);
         transaction.commit();
         System.out.println("Created Client.");

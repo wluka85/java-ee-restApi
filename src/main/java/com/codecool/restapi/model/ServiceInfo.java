@@ -15,6 +15,9 @@ public class ServiceInfo {
     private String annotation;
     private long price;
 
+    @ManyToOne(fetch=FetchType.EAGER)
+    private Phone phone;
+
     public ServiceInfo() {
     }
 
@@ -23,6 +26,11 @@ public class ServiceInfo {
         this.date = date;
         this.annotation = annotation;
         this.price = price;
+    }
+
+    public ServiceInfo(String description, Date date, String annotation, long price, Phone phone) {
+        this(description, date, annotation, price);
+        this.phone = phone;
     }
 
     public long getId() {
@@ -63,5 +71,13 @@ public class ServiceInfo {
 
     public void setPrice(long price) {
         this.price = price;
+    }
+
+    public Phone getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Phone phone) {
+        this.phone = phone;
     }
 }
