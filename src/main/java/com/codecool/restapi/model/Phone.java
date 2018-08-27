@@ -4,7 +4,7 @@ package com.codecool.restapi.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "phone")
+@Table(name = "phones")
 public class Phone {
 
     @Id
@@ -13,9 +13,28 @@ public class Phone {
     private String brand;
     private String model;
 
+    @ManyToOne(fetch=FetchType.EAGER)
+    private Client client;
+
+    public Phone(){
+    }
+
     public Phone(String brand, String model) {
         this.brand = brand;
         this.model = model;
+    }
+
+    public Phone(String brand, String model, Client client) {
+        this(brand, model);
+        this.client = client;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getBrand() {
@@ -34,7 +53,11 @@ public class Phone {
         this.model = model;
     }
 
-    private long user_id;
+    public Client getClient() {
+        return client;
+    }
 
-    public Phone(){}
+    public void setClient(Client client) {
+        this.client = client;
+    }
 }
