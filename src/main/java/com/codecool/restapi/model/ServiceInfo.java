@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "service_info")
-public class Service_info {
+public class ServiceInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,17 +14,23 @@ public class Service_info {
     private Date date;
     private String annotation;
     private long price;
-    private long phone_id;
 
-    public Service_info(){
-
+    public ServiceInfo() {
     }
 
-    public Service_info(String description, Date date, String annotation, long price) {
+    public ServiceInfo(String description, Date date, String annotation, long price) {
         this.description = description;
         this.date = date;
         this.annotation = annotation;
         this.price = price;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getDescription() {

@@ -6,7 +6,7 @@
 
     <persistence-unit name="restapiPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>com.codecool.restapi.model.Users</class>
+        <class>com.codecool.restapi.model.Client</class>
 
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL94Dialect"/>
@@ -18,8 +18,8 @@
 
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/jpaexampleDB"/>
-            <property name="javax.persistence.jdbc.users" value="polikkox"/>
-            <property name="javax.persistence.jdbc.password" value="1234"/>
+            <property name="javax.persistence.jdbc.client" value="dmitry"/>
+            <property name="javax.persistence.jdbc.password" value="dima1234"/>
             <!--<property name="javax.persistence.sql-load-script-source" value="insert.sql"/>-->
         </properties>
     </persistence-unit>
