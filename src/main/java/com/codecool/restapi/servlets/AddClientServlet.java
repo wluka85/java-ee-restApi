@@ -1,16 +1,25 @@
 package com.codecool.restapi.servlets;
 
+import com.codecool.restapi.dao.ServiceDAOImpl;
+import com.codecool.restapi.model.Client;
+import com.codecool.restapi.model.Phone;
+import com.codecool.restapi.model.ServiceInfo;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @WebServlet(urlPatterns = {"/addusers"})
 public class AddClientServlet extends HttpServlet {
 
-    DAO = new DAO
+    private ServiceDAOImpl serviceDAO = new ServiceDAOImpl();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -28,12 +37,23 @@ public class AddClientServlet extends HttpServlet {
         String annotation = request.getParameter("Annotation");
         String price = request.getParameter("Price");
 
-        clinet new Client("damian, @gm").com
-        dao.addUser(client )
+        Long parsePrice = Long.parseLong(price);
+
+        Client client = new Client(name, email);
+        Phone phone = new Phone(brand, model, client);
+
+        client.addPhone(phone);
+
+        ServiceInfo serviceInfo = new ServiceInfo(description, getDate(), annotation, parsePrice, phone);
+        phone.addServiceInfo(serviceInfo);
+
+        serviceDAO.add(client);
+        serviceDAO.add(phone);
+        serviceDAO.add(serviceInfo);
 
         request.getRequestDispatcher("WEB-INF/addUser.jsp").forward(request,response);
-
     }
+
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -43,4 +63,16 @@ public class AddClientServlet extends HttpServlet {
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 
+    private Date getDate(){
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        try {
+            Date date = sdf.parse(sdf.format(new Date()));
+            return date;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
