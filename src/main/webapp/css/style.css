@@ -1,0 +1,45 @@
+html{
+     margin: 0;
+     padding: 0;
+     border: 0;
+     font-size: 100%;
+     margin-top:40px;
+}
+.setSiteCenter{
+    background-color:cornflowerblue;
+    margin-left:170px;
+    margin-right:170px;
+    height:650px;
+}
+
+header{
+    text-align:center;
+    font-size:40px;
+    height:100px;
+    padding-top:30px;
+}
+.HeadTitle{
+    color:yellow;
+ }
+.mainCommand{
+    text-align:center;
+    color:white;
+}
+section{
+    margin-left:70px;
+}
+.spaceBetween{
+    color:white;
+    font-size:25px;
+    height:50px;
+}
+input{
+    float:right;
+    margin-right:450px;
+}
+.submit{
+    margin-top:30px;
+}
+input[type=submit] {
+    transform: scale(1.2);
+}
