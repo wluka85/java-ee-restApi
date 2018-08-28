@@ -4,4 +4,12 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+    <servlet-name>AddClientServlet</servlet-name>
+    <servlet-class>com.codecool.restapi.servlets.AddClientServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddClientServlet</servlet-name>
+    <url-pattern>/addusers</url-pattern>
+  </servlet-mapping>
 </web-app>
