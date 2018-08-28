@@ -16,12 +16,14 @@ public class UsersServlet extends HttpServlet {
 
     private List<Client> clients = dao.getClientList();
 
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         request.getRequestDispatcher("/users.jsp").forward(request, response);
     }
 
+    @Override
     public void doDelete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 

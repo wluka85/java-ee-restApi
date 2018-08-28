@@ -17,7 +17,7 @@
 
                 <c:forEach items="${clients}" var="client">
                 <tr>
-                    <td><a href="/home/${client.name}">${client.name}</a></td>
+                    <td><a href="/home/${client.id}">${client.name}</a></td>
                     <td><input type="hidden" name="ID" value=${client.id}>
                         <input type="submit" name="action" value="Delete" /></td>
                 </tr>

@@ -9,10 +9,18 @@
     <servlet-name>UsersServlet</servlet-name>
     <servlet-class>com.codecool.restapi.servlets.UsersServlet</servlet-class>
   </servlet>
+    <servlet>
+        <servlet-name>OneUserServlet</servlet-name>
+        <servlet-class>com.codecool.restapi.servlets.OneUserServlet</servlet-class>
+    </servlet>
 
   <servlet-mapping>
     <servlet-name>UsersServlet</servlet-name>
     <url-pattern>/users</url-pattern>
   </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OneUserServlet</servlet-name>
+        <url-pattern>/users/{userId}</url-pattern>
+    </servlet-mapping>
 
 </web-app>
