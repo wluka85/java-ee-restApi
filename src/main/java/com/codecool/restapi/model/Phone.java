@@ -1,6 +1,10 @@
 package com.codecool.restapi.model;
 
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +22,7 @@ public class Phone {
     @ManyToOne(fetch=FetchType.EAGER)
     private Client client;
 
-    @OneToMany(fetch=FetchType.EAGER, mappedBy = "phone")
+    @OneToMany(fetch=FetchType.EAGER, mappedBy = "phone", cascade={CascadeType.ALL})
     private List<ServiceInfo> serviceHistory = new ArrayList<>();
 
     public Phone(){

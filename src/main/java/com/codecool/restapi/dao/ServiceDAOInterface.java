@@ -9,6 +9,9 @@ import java.util.List;
 public interface ServiceDAOInterface {
 
     List<Client> getClientList();
+    List<Phone> getPhoneList();
+    List<ServiceInfo> getServiceInfoList();
+
     Client getClient(long id);
     Phone getPhone(long id);
     ServiceInfo getServiceInfo(long id);

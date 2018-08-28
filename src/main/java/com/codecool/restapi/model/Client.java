@@ -1,5 +1,9 @@
 package com.codecool.restapi.model;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +18,7 @@ public class Client {
     private String name;
     private String email;
 
-    @OneToMany(fetch=FetchType.EAGER, mappedBy = "client")
+    @OneToMany(fetch=FetchType.EAGER, mappedBy = "client", cascade={CascadeType.ALL})
     private List<Phone> phones = new ArrayList<>();
 
     public Client() {
