@@ -4,4 +4,15 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+  <servlet>
+    <servlet-name>UsersServlet</servlet-name>
+    <servlet-class>com.codecool.restapi.servlets.usersServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>UsersServlet</servlet-name>
+    <url-pattern>/users</url-pattern>
+  </servlet-mapping>
+
 </web-app>
