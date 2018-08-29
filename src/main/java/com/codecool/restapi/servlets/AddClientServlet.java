@@ -54,7 +54,7 @@ public class AddClientServlet extends HttpServlet {
 
         request.getRequestDispatcher("WEB-INF/addUser.jsp").forward(request,response);
     }
-    
+
     private Date getDate(){
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
