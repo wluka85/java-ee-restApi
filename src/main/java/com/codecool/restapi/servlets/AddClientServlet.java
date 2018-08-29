@@ -4,6 +4,7 @@ import com.codecool.restapi.dao.ServiceDAOImpl;
 import com.codecool.restapi.model.Client;
 import com.codecool.restapi.model.Phone;
 import com.codecool.restapi.model.ServiceInfo;
+import org.hibernate.cfg.Configuration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -53,16 +54,7 @@ public class AddClientServlet extends HttpServlet {
 
         request.getRequestDispatcher("WEB-INF/addUser.jsp").forward(request,response);
     }
-
-    @Override
-    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    @Override
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    }
-
+    
     private Date getDate(){
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
