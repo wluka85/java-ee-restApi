@@ -8,9 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class App {
     public static void main(String[] args) {
@@ -27,25 +25,33 @@ public class App {
 
         Client client1 = new Client("Damian", "loveIphones@iphones.com");
 
-        Phone phone1 = new Phone("LG", "newmodel", client1);
+   //     Phone phone1 = new Phone("LG", "newmodel", client1);
         Phone phone2 = new Phone("iPhone", "s5", client1);
+
 //        List<Phone> phones1 = new ArrayList<>();
-        client1.addPhone(phone1);
+   //     client1.addPhone(phone1);
+        client1.addPhone(phone2);
         client1.addPhone(phone2);
 
-        ServiceInfo lgFix = new ServiceInfo("bla", new Date(), "blabla", 100, phone1);
+    //    ServiceInfo lgFix = new ServiceInfo("bla", new Date(), "blabla", 100, phone1);
         ServiceInfo iPhoneFix = new ServiceInfo("awful", new Date(), " ", 500, phone2);
+        ServiceInfo smashedScreen = new ServiceInfo("screen smashed", new Date(2,10,2018), "fixed", 500, phone2);
+
 //        List<ServiceInfo> client1ServiceHistory = new ArrayList<>();
-        phone1.addServiceInfo(lgFix);
+
+    //    phone1.addServiceInfo(lgFix);
         phone2.addServiceInfo(iPhoneFix);
+        phone2.addServiceInfo(smashedScreen);
 
 
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        em.persist(phone1);
+    //    em.persist(phone1);
         em.persist(phone2);
-        em.persist(lgFix);
+        em.persist(phone2);
+     //   em.persist(lgFix);
         em.persist(iPhoneFix);
+        em.persist(smashedScreen);
         em.persist(client1);
         transaction.commit();
         System.out.println("Created Client.");
@@ -57,12 +63,6 @@ public class App {
 //        transaction.commit();
 //        System.out.println("Created phones.");
 
-
-        ServiceInfo service_info = new ServiceInfo("screen smashed", new Date(2,10,2018), "fixed", 500);
-        transaction.begin();
-        em.persist(service_info);
-        transaction.commit();
-        System.out.println("Created service_info");
 
     }
 }
