@@ -1,5 +1,6 @@
 package com.codecool.restapi.servlets;
 
+import com.codecool.restapi.dao.ServiceDAOImpl;
 import com.codecool.restapi.dao.ServiceDAOInterface;
 import com.codecool.restapi.model.Client;
 import com.codecool.restapi.model.Phone;
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class OneUserServlet extends HttpServlet {
 
-    ServiceDAOInterface dao;
+    ServiceDAOInterface dao = new ServiceDAOImpl();
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)

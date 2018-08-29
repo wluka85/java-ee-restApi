@@ -1,5 +1,6 @@
 package com.codecool.restapi.servlets;
 
+import com.codecool.restapi.dao.ServiceDAOImpl;
 import com.codecool.restapi.dao.ServiceDAOInterface;
 import com.codecool.restapi.model.Client;
 
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class UsersServlet extends HttpServlet {
 
-    ServiceDAOInterface dao;
+    private ServiceDAOInterface dao = new ServiceDAOImpl();
 
     private List<Client> clients = dao.getClientList();
 
