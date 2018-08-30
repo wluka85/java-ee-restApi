@@ -28,14 +28,14 @@
     <th>Price</th>
   </tr>
 
-  <c:forEach items="${contacts}" var="contact">
+  <c:forEach items="${services}" var="service">
 
       <tr>
-        <th>${service-info.id}</th>
-        <th>${service-info.description}</th>
-        <th>${service-info.date}</th>
-        <th>${service-info.annotation}</th>
-        <th>${service-info.price}</th>
+        <th> <a href="jsonservice/service=${service.id}">${service.id}</a></th>
+        <th>${service.description}</th>
+        <th>${service.date}</th>
+        <th>${service.annotation}</th>
+        <th>${service.price}</th>
       </tr>
 
   </c:forEach>

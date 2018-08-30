@@ -16,7 +16,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@WebServlet(urlPatterns = {"/addusers"})
+//@WebServlet(urlPatterns = {"/addusers"})
 public class AddClientServlet extends HttpServlet {
 
     private ServiceDAOImpl serviceDAO = new ServiceDAOImpl();
