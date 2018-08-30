@@ -1,11 +1,14 @@
 package com.codecool.restapi.servlets;
 
+import com.codecool.restapi.JSON.JSONParser;
 import com.codecool.restapi.dao.ServiceDAOImpl;
 import com.codecool.restapi.model.Client;
 import com.codecool.restapi.model.Phone;
 import com.codecool.restapi.model.ServiceInfo;
 import org.hibernate.cfg.Configuration;
+import org.json.simple.JSONObject;
 
+import javax.json.JsonObject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -52,6 +55,10 @@ public class AddClientServlet extends HttpServlet {
         serviceDAO.add(phone);
         serviceDAO.add(serviceInfo);
 
+        JSONParser jsonParser = new JSONParser();
+        JSONObject tempt =  jsonParser.generateJSONByList(client.getPhones());
+
+
         request.getRequestDispatcher("WEB-INF/addUser.jsp").forward(request,response);
     }
 
@@ -65,6 +72,7 @@ public class AddClientServlet extends HttpServlet {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 }
