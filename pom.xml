@@ -36,70 +36,73 @@
       <artifactId>hibernate-maven-plugin</artifactId>
       <version>4.3.1.Final</version>
     </dependency>
-
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
       <version>5.3.5.Final</version>
     </dependency>
-    <dependency>
-      <groupId>org.jboss.logging</groupId>
-      <artifactId>jboss-logging</artifactId>
-      <version>3.3.2.Final</version>
-    </dependency>
+      <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-entitymanager</artifactId>
+          <version>5.2.10.Final</version>
+      </dependency>
 
-    <dependency>
+
+      <dependency>
       <groupId>org.eclipse.persistence</groupId>
       <artifactId>org.eclipse.persistence.jpa</artifactId>
       <version>${version.eclipselink}</version>
     </dependency>
-    <!--<dependency>-->
-    <!--<groupId>org.eclipse.persistence</groupId>-->
-    <!--<artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>-->
-    <!--<version>${version.eclipselink}</version>-->
-    <!--</dependency>-->
 
-    <dependency>
+
+      <dependency>
+      <groupId>org.eclipse.persistence</groupId>
+      <artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
+      <version>${version.eclipselink}</version>
+      </dependency>
+
+      <dependency>
       <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-entitymanager</artifactId>
-      <version>5.2.10.Final</version>
-    </dependency>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${version.hibernate.validator}</version>
+      </dependency>
+      <dependency>
 
-    <!--<dependency>-->
-    <!--<groupId>org.hibernate</groupId>-->
-    <!--<artifactId>hibernate-validator</artifactId>-->
-    <!--<version>${version.hibernate.validator}</version>-->
-    <!--</dependency>-->
-    <dependency>
+
       <groupId>org.glassfish</groupId>
       <artifactId>javax.el</artifactId>
       <version>${version.el}</version>
     </dependency>
 
-    <!--<dependency>-->
-    <!--<groupId>mysql</groupId>-->
-    <!--<artifactId>mysql-connector-java</artifactId>-->
-    <!--<version>${version.mysql}</version>-->
-    <!--</dependency>-->
-    <dependency>
+      <!--<dependency>-->
+      <!--<groupId>mysql</groupId>-->
+      <!--<artifactId>mysql-connector-java</artifactId>-->
+      <!--<version>${version.mysql}</version>-->
+      <!--</dependency>-->
+      <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>${version.postgres}</version>
     </dependency>
 
-    <dependency>
+      <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>${version.junit}</version>
       <scope>test</scope>
     </dependency>
 
-    <dependency>
+      <dependency>
+          <groupId>org.jboss.logging</groupId>
+          <artifactId>jboss-logging</artifactId>
+          <version>3.3.2.Final</version>
+      </dependency>
+      <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
       <version>2.8.2</version>
     </dependency>
-    <dependency>
+      <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
       <version>2.8.2</version>
@@ -118,11 +121,11 @@
       <version>1.2</version>
     </dependency>
 
-      <dependency>
-          <groupId>org.eclipse.jetty</groupId>
-          <artifactId>jetty-maven-plugin</artifactId>
-          <version>9.4.12.RC2</version>
-      </dependency>
+      <!--<dependency>-->
+          <!--<groupId>org.eclipse.jetty</groupId>-->
+          <!--<artifactId>jetty-maven-plugin</artifactId>-->
+          <!--<version>9.4.12.RC2</version>-->
+      <!--</dependency>-->
   </dependencies>
 
   <build>
@@ -145,9 +148,33 @@
           </configuration>
         </plugin>
         <plugin>
-          <groupId>org.eclipse.jetty</groupId>
-          <artifactId>jetty-maven-plugin</artifactId>
-          <version>9.4.7.v20170914</version>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.7.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.20.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.2.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
         </plugin>
 
         <plugin>
@@ -155,9 +182,9 @@
             <artifactId>jetty-maven-plugin</artifactId>
             <version>9.2.2.v20140723</version>
             <!--<version>9.4.7.v20170914</version>-->
-            <configuration>
-                <webAppSourceDirectory>src/main/webapp</webAppSourceDirectory>
-          </configuration>
+            <!--<configuration>-->
+                <!--<webAppSourceDirectory>src/main/webapp</webAppSourceDirectory>-->
+          <!--</configuration>-->
         </plugin>
 
 

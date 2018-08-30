@@ -15,24 +15,31 @@ public class UsersServlet extends HttpServlet {
 
     private ServiceDAOInterface dao = new ServiceDAOImpl();
 
-    private List<Client> clients = dao.getClientList();
+    private List<Client> clients;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.getRequestDispatcher("/users.jsp").forward(request, response);
+        clients = dao.getClientList();
+
+        request.setAttribute("clients", clients);
+        request.getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
     }
 
     @Override
-    public void doDelete(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
 
         Long userId = Long.parseLong(request.getParameter("ID"));
         Client client = dao.getClient(userId);
         dao.delete(client);
 
-        request.getRequestDispatcher("/users.jsp").forward(request, response);
+        clients = dao.getClientList();
+        request.setAttribute("clients", clients);
+
+        request.getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
 
     }
 

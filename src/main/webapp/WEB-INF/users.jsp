@@ -10,14 +10,14 @@
 <div class="container">
     <div class="list-container">
 
-        <form method="POST" action="userservlet">
+        <form method="POST" action="users">
             <table>
                 <th>Client's name</th>
                 <th>Delete client</th>
 
                 <c:forEach items="${clients}" var="client">
                 <tr>
-                    <td><a href="/home/${client.id}">${client.name}</a></td>
+                    <td><a href="/users/${client.id}">${client.name}</a></td>
                     <td><input type="hidden" name="ID" value=${client.id}>
                         <input type="submit" name="action" value="Delete" /></td>
                 </tr>
