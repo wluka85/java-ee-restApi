@@ -18,11 +18,19 @@
 
     <servlet>
         <servlet-name>JSON-Servlet</servlet-name>
-        <servlet-class>com.codecool.restapi.servlets.AddClientServlet</servlet-class>
+        <servlet-class>com.codecool.restapi.servlets.JsonServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>AddClientServlet</servlet-name>
-        <url-pattern>/addusers</url-pattern>
+        <servlet-name>JSON-Servlet</servlet-name>
+        <url-pattern>/jsonservice/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>JSON-Services-Servlet</servlet-name>
+        <servlet-class>com.codecool.restapi.servlets.JsonServicesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JSON-Services-Servlet</servlet-name>
+        <url-pattern>/jsonservices/*</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ServiceInfoServlet</servlet-name>

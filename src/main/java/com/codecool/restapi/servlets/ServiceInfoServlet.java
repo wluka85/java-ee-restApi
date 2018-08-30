@@ -31,6 +31,7 @@ public class ServiceInfoServlet extends HttpServlet {
         List<ServiceInfo> serviceInfoList = phone.getServiceHistory();
 
         request.setAttribute("services", serviceInfoList);
+        request.setAttribute("phoneid", phoneId);
 
         request.getRequestDispatcher("/WEB-INF/service-info.jsp").forward(request, response);
     }

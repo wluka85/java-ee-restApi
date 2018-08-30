@@ -30,4 +30,21 @@ public class JSONParser {
         System.out.println(jsonObject);
         return jsonObject;
     }
+
+    public JSONObject generateJSONByServiceInfoList(List<ServiceInfo> data){
+            JSONArray jsonArray = new JSONArray();
+
+            Phone phone = data.get(0).getPhone();
+
+            for(ServiceInfo serviceInfo : data){
+                jsonArray.add(serviceInfo.getDescription());
+                jsonArray.add(serviceInfo.getPrice());
+                jsonArray.add(serviceInfo.getAnnotation());
+
+            }
+            this.jsonObject.put(phone.getBrand() + " " + phone.getModel(), jsonArray);
+
+        System.out.println(jsonObject);
+        return jsonObject;
+    }
 }

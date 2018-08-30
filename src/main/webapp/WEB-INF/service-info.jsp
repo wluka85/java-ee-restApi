@@ -38,6 +38,8 @@
         <th>${service.price}</th>
       </tr>
 
+      <a href="jsonservices/phone=${phoneid}">Generate all service</a>
+
   </c:forEach>
 
 </table>
