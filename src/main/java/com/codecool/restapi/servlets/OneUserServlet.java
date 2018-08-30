@@ -66,12 +66,15 @@ public class OneUserServlet extends HttpServlet {
 
 //        if (serviceMessages.isEmpty()) {
 //            Integer price = Integer.parseInt(stringPrice);
-//            ServiceInfo serviceInfo = new ServiceInfo(description, new Date(), annotation, price, phone);
+//            ServiceInfo serviceInfo = new ServiceInfo(description, new Date(), annotation, price);
+//            phone.addServiceInfo(serviceInfo);
 //            dao.add(serviceInfo);
+//            dao.update(phone);
 //        }
         if (phoneMessages.isEmpty()) {
             Phone newPhone = new Phone(brand, model);
             client.addPhone(newPhone);
+            dao.add(newPhone);
             dao.update(client);
         }
 
