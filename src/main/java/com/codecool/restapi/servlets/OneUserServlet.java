@@ -20,10 +20,7 @@ public class OneUserServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String pathInfo = request.getPathInfo();
-        String[] pathParts = pathInfo.split("/");
-        Long id = Long.parseLong(pathParts[1]);
-
+        Long id = getClientId(request);
         Client client = dao.getClient(id);
 
         List<Phone> phones = client.getPhones();
@@ -36,5 +33,12 @@ public class OneUserServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
 
+    }
+
+
+    private long getClientId(HttpServletRequest request) {
+        String pathInfo = request.getPathInfo();
+        String[] pathParts = pathInfo.split("/");
+        return Long.parseLong(pathParts[1]);
     }
 }
