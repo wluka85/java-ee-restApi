@@ -15,10 +15,10 @@ public class App {
         System.out.println("Hello!!");
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("restapiPU");
         EntityManager em = emf.createEntityManager();
-        populateDb(em);
+//        populateDb(em);
 
-        em.close();
-        emf.close();
+//        em.close();
+//        emf.close();
     }
 
     public static void populateDb(EntityManager em) {

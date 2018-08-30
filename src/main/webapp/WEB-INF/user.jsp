@@ -8,7 +8,7 @@
 <body>
 
 <div class="container">
-    <form method="post" action="oneuserservlet">
+    <form method="post" action="user/${client.id}">
 
         <h3>Client's information</h3>
         <ul>

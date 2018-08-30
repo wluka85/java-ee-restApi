@@ -22,12 +22,15 @@ public class OneUserServlet extends HttpServlet {
 
         String pathInfo = request.getPathInfo();
         String[] pathParts = pathInfo.split("/");
-        Long id = Long.parseLong(pathParts[2]);
+        Long id = Long.parseLong(pathParts[1]);
 
         Client client = dao.getClient(id);
+
         List<Phone> phones = client.getPhones();
 
-        request.getRequestDispatcher("/user.jsp").forward(request, response);
+        request.setAttribute("client", client);
+        request.setAttribute("phones", phones);
+        request.getRequestDispatcher("/WEB-INF/user.jsp").forward(request, response);
     }
 
     @Override
