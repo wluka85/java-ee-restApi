@@ -72,7 +72,7 @@ public class OneUserServlet extends HttpServlet {
 //            dao.update(phone);
 //        }
         if (phoneMessages.isEmpty()) {
-            Phone newPhone = new Phone(brand, model);
+            Phone newPhone = new Phone(brand, model, client);
             client.addPhone(newPhone);
             dao.add(newPhone);
             dao.update(client);

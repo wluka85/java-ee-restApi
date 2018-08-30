@@ -25,7 +25,7 @@ public class ServiceInfoServlet extends HttpServlet {
                          HttpServletResponse response)
             throws ServletException, IOException {
 
-        int phoneId = 3;
+        long phoneId = getServiceId(request);
 
         Phone phone = serviceDAOInterface.getPhone(phoneId);
         List<ServiceInfo> serviceInfoList = phone.getServiceHistory();
@@ -34,5 +34,10 @@ public class ServiceInfoServlet extends HttpServlet {
         request.setAttribute("phoneid", phoneId);
 
         request.getRequestDispatcher("/WEB-INF/service-info.jsp").forward(request, response);
+    }
+    private long getServiceId(HttpServletRequest request) {
+        String pathInfo = request.getPathInfo();
+        String[] pathParts = pathInfo.split("/");
+        return Long.parseLong(pathParts[1]);
     }
 }
