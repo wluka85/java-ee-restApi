@@ -23,6 +23,8 @@ public class JSONParser {
                 jsonArray.add(serviceInfo.getDescription());
                 jsonArray.add(serviceInfo.getPrice());
                 jsonArray.add(serviceInfo.getAnnotation());
+                jsonArray.add(serviceInfo.getDate());
+
 
             }
             this.jsonObject.put(phone.getClient().getName(), jsonArray);
