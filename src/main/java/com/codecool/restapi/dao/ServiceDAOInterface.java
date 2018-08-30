@@ -27,4 +27,5 @@ public interface ServiceDAOInterface {
     void delete(Client client);
     void delete(Phone phone);
     void delete(ServiceInfo serviceInfo);
+
 }
