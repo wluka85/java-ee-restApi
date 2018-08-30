@@ -35,7 +35,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>JSON-Servlet</servlet-name>
-        <url-pattern>/jsonservice/*</url-pattern>
+        <url-pattern>phones/jsonservice/*</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>JSON-Services-Servlet</servlet-name>
@@ -43,7 +43,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>JSON-Services-Servlet</servlet-name>
-        <url-pattern>/jsonservices/*</url-pattern>
+        <url-pattern>phones/jsonservices/*</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ServiceInfoServlet</servlet-name>
@@ -51,7 +51,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServiceInfoServlet</servlet-name>
-        <url-pattern>/service</url-pattern>
+        <url-pattern>/phones/*</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>User</servlet-name>
