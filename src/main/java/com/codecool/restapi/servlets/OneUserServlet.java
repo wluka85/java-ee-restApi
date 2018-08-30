@@ -37,20 +37,7 @@ public class OneUserServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        Map<String, String> serviceMessages = new HashMap<>();
         Map<String, String> phoneMessages = new HashMap<>();
-
-//        ---------Service info values parsing----------
-//        String description = request.getParameter("description");
-//        String annotation = request.getParameter("annotation");
-//        String stringPrice = request.getParameter("price");
-//        if (stringPrice == null || stringPrice.trim().isEmpty()) {
-//            serviceMessages.put("price", "Empty");
-//        } else if (!stringPrice.matches("\\d+")) {
-//            serviceMessages.put("price", "Non digit");
-//        }
-//        Long phoneId = Long.parseLong(request.getParameter("phoneId"));
-//        Phone phone = dao.getPhone(phoneId);
 
 //      ----------Phone info values parsing-------------
         String brand = request.getParameter("brand");
@@ -64,15 +51,8 @@ public class OneUserServlet extends HttpServlet {
         Long clientId = Long.parseLong(request.getParameter("clientId"));
         Client client = dao.getClient(clientId);
 
-//        if (serviceMessages.isEmpty()) {
-//            Integer price = Integer.parseInt(stringPrice);
-//            ServiceInfo serviceInfo = new ServiceInfo(description, new Date(), annotation, price);
-//            phone.addServiceInfo(serviceInfo);
-//            dao.add(serviceInfo);
-//            dao.update(phone);
-//        }
         if (phoneMessages.isEmpty()) {
-            Phone newPhone = new Phone(brand, model);
+            Phone newPhone = new Phone(brand, model, client);
             client.addPhone(newPhone);
             dao.add(newPhone);
             dao.update(client);
