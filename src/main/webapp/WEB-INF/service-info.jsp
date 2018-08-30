@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<h2>Service info of ${phone.name} ${messages.name}</h2>
+<h2>Service info of ${phone.brand} ${phone.model}</h2>
 <p>This is a Phonebook application</p>
 
 
@@ -28,19 +28,30 @@
     <th>Price</th>
   </tr>
 
+    <a href="jsonservices/phone=${phone.id}">Generate all service</a>
+
   <c:forEach items="${services}" var="service">
 
       <tr>
-        <th> <a href="jsonservice/service=${service.id}">${service.id}</a></th>
+        <th><a href="jsonservice/service=${service.id}">${service.id}</a></th>
         <th>${service.description}</th>
         <th>${service.date}</th>
         <th>${service.annotation}</th>
         <th>${service.price}</th>
       </tr>
-
-      <a href="jsonservices/phone=${phoneid}">Generate all service</a>
-
   </c:forEach>
+
+    <form method="post" action="${phone.id}">
+        <p>New issue</p>
+        <label for="description">Problem description</label>
+        <input type="text" id="description" name="description">
+        <label for="annotation">Annotation</label>
+        <input type="text" id="annotation" name="annotation">
+        <label for="price">Price of service</label>
+        <input type="text" id="price" name="price">
+        <input type="hidden" name="phoneId" value=${phone.id}>
+        <input type="submit" name="action" value="Submit">
+    </form>
 
 </table>
 

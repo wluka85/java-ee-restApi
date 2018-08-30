@@ -15,16 +15,7 @@
             <li>${client.name}</li>
             <li>${client.email}</li>
             <c:forEach items="${phones}" var="phone">
-                <li><a href="/home/${client.id}/${phone.id}">${phone.brand} ${phone.model}</a></li>
-                <%--<p>New issue</p>--%>
-                <%--<label for="description">Problem description</label>--%>
-                <%--<input type="text" id="description" name="description">--%>
-                <%--<label for="annotation">Annotation</label>--%>
-                <%--<input type="text" id="annotation" name="annotation">--%>
-                <%--<label for="price">Price of service</label>--%>
-                <%--<input type="text" id="price" name="price">--%>
-                <%--<input type="hidden" name="phoneId" value=${phone.id}>--%>
-                <%--<input type="submit" name="action" value="Submit">--%>
+                <li><a href="/phones/${phone.id}">${phone.brand} ${phone.model}</a></li>
             </c:forEach>
         </ul>
         <h3>Add new phone</h3>
