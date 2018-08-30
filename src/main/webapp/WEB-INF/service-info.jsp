@@ -1,14 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
-<%--
-  Created by IntelliJ IDEA.
-  User: wluka
-  Date: 23.08.18
-  Time: 14:34
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%-- Created by IntelliJ IDEA. User: wluka Date: 23.08.18 Time: 14:34
+To change this template use File | Settings | File Templates. --%> <%@
+        page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Service Info</title>
@@ -17,8 +11,6 @@
 
 <h2>Service info of ${phone.brand} ${phone.model}</h2>
 <p>This is a Phonebook application</p>
-
-
 <table style="width:100%">
   <tr>
     <th>ID</th>
@@ -50,10 +42,10 @@
         <label for="price">Price of service</label>
         <input type="text" id="price" name="price">
         <input type="hidden" name="phoneId" value=${phone.id}>
+
         <input type="submit" name="action" value="Submit">
     </form>
 
 </table>
-
 </body>
 </html>

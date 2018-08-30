@@ -11,10 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class OneUserServlet extends HttpServlet {
 
@@ -27,11 +24,19 @@ public class OneUserServlet extends HttpServlet {
 
         Long id = getClientId(request);
         client = dao.getClient(id);
-
         List<Phone> phones = client.getPhones();
 
+
+        //Start Temporary solution
+
+        Set<Phone> newPhoneList = new LinkedHashSet<>();
+        for (Phone phone: phones) {
+            newPhoneList.add(phone);
+        }
+        //EndTemporary solution
+
         request.setAttribute("client", client);
-        request.setAttribute("phones", phones);
+        request.setAttribute("phones", newPhoneList);
         request.getRequestDispatcher("/WEB-INF/user.jsp").forward(request, response);
     }
 

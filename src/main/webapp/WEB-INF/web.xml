@@ -61,5 +61,13 @@
         <servlet-name>User</servlet-name>
         <url-pattern>/user/*</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>AddClientServlet</servlet-name>
+        <servlet-class>com.codecool.restapi.servlets.AddClientServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddClientServlet</servlet-name>
+        <url-pattern>/addusers</url-pattern>
+    </servlet-mapping>
 
 </web-app>

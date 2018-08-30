@@ -27,7 +27,9 @@ public class ServiceInfoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Phone phone = serviceDAOInterface.getPhone(getPhoneId(request));
+        long phoneId = getServiceId(request);
+        Phone phone = serviceDAOInterface.getPhone(phoneId);
+
         List<ServiceInfo> serviceInfoList = phone.getServiceHistory();
 
         request.setAttribute("services", serviceInfoList);
@@ -36,37 +38,37 @@ public class ServiceInfoServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/service-info.jsp").forward(request, response);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Map<String, String> serviceMessages = new HashMap<>();
-
-        //        ---------Service info values parsing----------
-        String description = request.getParameter("description");
-        String annotation = request.getParameter("annotation");
-        String stringPrice = request.getParameter("price");
-        if (stringPrice == null || stringPrice.trim().isEmpty()) {
-            serviceMessages.put("price", "Empty");
-        } else if (!stringPrice.matches("\\d+")) {
-            serviceMessages.put("price", "Non digit");
-        }
-        Long phoneId = Long.parseLong(request.getParameter("phoneId"));
-        Phone phone = serviceDAOInterface.getPhone(phoneId);
-
-        if (serviceMessages.isEmpty()) {
+        // ---------Service info values parsing----------
+         String description = request.getParameter("description");
+         String annotation = request.getParameter("annotation");
+         String stringPrice = request.getParameter("price");
+         if (stringPrice == null || stringPrice.trim().isEmpty()) {
+             serviceMessages.put("price", "Empty");
+         }
+         else if (!stringPrice.matches("\\d+")) {
+             serviceMessages.put("price", "Non digit");
+         }
+         Long phoneId = Long.parseLong(request.getParameter("phoneId"));
+         Phone phone = serviceDAOInterface.getPhone(phoneId);
+         if (serviceMessages.isEmpty()) {
             Integer price = Integer.parseInt(stringPrice);
             ServiceInfo serviceInfo = new ServiceInfo(description, new Date(), annotation, price, phone);
             phone.addServiceInfo(serviceInfo);
             serviceDAOInterface.add(serviceInfo);
             serviceDAOInterface.update(phone);
         }
-
         doGet(request, response);
         request.getRequestDispatcher("/WEB-INF/service-info.jsp").forward(request, response);
     }
-
     private long getPhoneId (HttpServletRequest request){
+        String pathInfo = request.getPathInfo();
+        String[] pathParts = pathInfo.split("/");
+        return Long.parseLong(pathParts[1]);
+    }
+
+    private long getServiceId(HttpServletRequest request) {
         String pathInfo = request.getPathInfo();
         String[] pathParts = pathInfo.split("/");
         return Long.parseLong(pathParts[1]);
