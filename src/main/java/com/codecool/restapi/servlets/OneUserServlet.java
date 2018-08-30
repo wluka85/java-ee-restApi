@@ -11,10 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class OneUserServlet extends HttpServlet {
 
@@ -27,11 +24,19 @@ public class OneUserServlet extends HttpServlet {
 
         Long id = getClientId(request);
         client = dao.getClient(id);
-
         List<Phone> phones = client.getPhones();
 
+
+        //Start Temporary solution
+
+        Set<Phone> newPhoneList = new LinkedHashSet<>();
+        for (Phone phone: phones) {
+            newPhoneList.add(phone);
+        }
+        //EndTemporary solution
+
         request.setAttribute("client", client);
-        request.setAttribute("phones", phones);
+        request.setAttribute("phones", newPhoneList);
         request.getRequestDispatcher("/WEB-INF/user.jsp").forward(request, response);
     }
 
@@ -40,17 +45,6 @@ public class OneUserServlet extends HttpServlet {
 //        Map<String, String> serviceMessages = new HashMap<>();
         Map<String, String> phoneMessages = new HashMap<>();
 
-//        ---------Service info values parsing----------
-//        String description = request.getParameter("description");
-//        String annotation = request.getParameter("annotation");
-//        String stringPrice = request.getParameter("price");
-//        if (stringPrice == null || stringPrice.trim().isEmpty()) {
-//            serviceMessages.put("price", "Empty");
-//        } else if (!stringPrice.matches("\\d+")) {
-//            serviceMessages.put("price", "Non digit");
-//        }
-//        Long phoneId = Long.parseLong(request.getParameter("phoneId"));
-//        Phone phone = dao.getPhone(phoneId);
 
 //      ----------Phone info values parsing-------------
         String brand = request.getParameter("brand");
@@ -64,13 +58,7 @@ public class OneUserServlet extends HttpServlet {
         Long clientId = Long.parseLong(request.getParameter("clientId"));
         Client client = dao.getClient(clientId);
 
-//        if (serviceMessages.isEmpty()) {
-//            Integer price = Integer.parseInt(stringPrice);
-//            ServiceInfo serviceInfo = new ServiceInfo(description, new Date(), annotation, price);
-//            phone.addServiceInfo(serviceInfo);
-//            dao.add(serviceInfo);
-//            dao.update(phone);
-//        }
+
         if (phoneMessages.isEmpty()) {
             Phone newPhone = new Phone(brand, model, client);
             client.addPhone(newPhone);
