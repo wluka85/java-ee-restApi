@@ -8,7 +8,7 @@
 <body>
 
 <div class="container">
-    <form method="post" action="user/${client.id}">
+    <form method="post" action="${client.id}">
 
         <h3>Client's information</h3>
         <ul>
@@ -16,19 +16,27 @@
             <li>${client.email}</li>
             <c:forEach items="${phones}" var="phone">
                 <li><a href="/home/${client.id}/${phone.id}">${phone.brand} ${phone.model}</a></li>
+                <%--<p>New issue</p>--%>
+                <%--<label for="description">Problem description</label>--%>
+                <%--<input type="text" id="description" name="description">--%>
+                <%--<label for="annotation">Annotation</label>--%>
+                <%--<input type="text" id="annotation" name="annotation">--%>
+                <%--<label for="price">Price of service</label>--%>
+                <%--<input type="text" id="price" name="price">--%>
+                <%--<input type="hidden" name="phoneId" value=${phone.id}>--%>
+                <%--<input type="submit" name="action" value="Submit">--%>
             </c:forEach>
         </ul>
-
         <h3>Add new phone</h3>
         <label for="brand">Phone brand</label>
         <input type="text" id="brand" name="brand">
 
         <label for="model">Phone model</label>
         <input type="text" id="model" name="model">
-
+        <input type="hidden" name="clientId" value=${client.id}>
         <input type="submit" name="action" value="Submit">
-
     </form>
+
 </div>
 
 </body>

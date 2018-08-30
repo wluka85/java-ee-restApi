@@ -40,7 +40,6 @@ public class UsersServlet extends HttpServlet {
         request.setAttribute("clients", clients);
 
         request.getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
-
     }
 
 }
