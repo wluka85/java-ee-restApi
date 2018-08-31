@@ -90,21 +90,21 @@ public class ServiceDAOImpl implements ServiceDAOInterface {
     @Override
     public void update(Client client) {
         transaction.begin();
-        em.persist(client);
+        em.merge(client);
         transaction.commit();
     }
 
     @Override
     public void update(Phone phone) {
         transaction.begin();
-        em.persist(phone);
+        em.merge(phone);
         transaction.commit();
     }
 
     @Override
     public void update(ServiceInfo serviceInfo) {
         transaction.begin();
-        em.persist(serviceInfo);
+        em.merge(serviceInfo);
         transaction.commit();
     }
 

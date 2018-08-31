@@ -22,7 +22,7 @@ public class Phone {
     @ManyToOne(fetch=FetchType.EAGER)
     private Client client;
 
-    @OneToMany(fetch=FetchType.EAGER, mappedBy = "phone", cascade={CascadeType.ALL})
+    @OneToMany(fetch=FetchType.EAGER, mappedBy = "phone", cascade = {CascadeType.ALL})
     private List<ServiceInfo> serviceHistory = new ArrayList<>();
 
     public Phone(){

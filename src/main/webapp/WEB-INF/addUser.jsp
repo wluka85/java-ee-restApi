@@ -21,13 +21,13 @@
     <section>
         <div class="mainCommand"><h1>Fill the form below</h1></div>
         <form method="POST" onsubmit="return phoneNumber()">
-            <div class="spaceBetween">Name<input class="space" type="text" name="Name" required></div>
-            <div class="spaceBetween">Email<input type="text" required name="Email"></div>
-            <div class="spaceBetween">Brand<input type="text" required name="Brand"></div>
-            <div class="spaceBetween">Model<input type="text" required name="Model"></div>
-            <div class="spaceBetween">Description<input type="text" required name="Description"></div>
-            <div class="spaceBetween">Annotation<input type="text" required name="Annotation"></div>
-            <div class="spaceBetween">Price<input type="text" required name="Price" id="telID"></div>
+            <div class="spaceBetween">Name<input class="space" type="text" name="Name" ></div>
+            <div class="spaceBetween">Email<input type="text"  name="Email"></div>
+            <div class="spaceBetween">Brand<input type="text"  name="Brand"></div>
+            <div class="spaceBetween">Model<input type="text"  name="Model"></div>
+            <div class="spaceBetween">Description<input type="text"  name="Description"></div>
+            <div class="spaceBetween">Annotation<input type="text"  name="Annotation"></div>
+            <div class="spaceBetween">Price<input type="text" name="Price" id="telID"></div>
             <input class="submit" type="submit" value="Add">
         </form>
     </section>
