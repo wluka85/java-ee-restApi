@@ -42,9 +42,7 @@ public class OneUserServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        Map<String, String> serviceMessages = new HashMap<>();
         Map<String, String> phoneMessages = new HashMap<>();
-
 
 //      ----------Phone info values parsing-------------
         String brand = request.getParameter("brand");
@@ -57,7 +55,6 @@ public class OneUserServlet extends HttpServlet {
         }
         Long clientId = Long.parseLong(request.getParameter("clientId"));
         Client client = dao.getClient(clientId);
-
 
         if (phoneMessages.isEmpty()) {
             Phone newPhone = new Phone(brand, model, client);

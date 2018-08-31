@@ -8,25 +8,31 @@ To change this template use File | Settings | File Templates. --%> <%@
     <title>Service Info</title>
 </head>
 <body>
+
 <h2>Service info of ${phone.brand} ${phone.model}</h2>
 <p>This is a Phonebook application</p>
 <table style="width:100%">
-    <tr>
-        <th>ID</th>
-        <th>Description</th>
-        <th>Date</th>
-        <th>Annotation</th>
-        <th>Price</th>
-    </tr>
+  <tr>
+    <th>ID</th>
+    <th>Description</th>
+    <th>Date</th>
+    <th>Annotation</th>
+    <th>Price</th>
+  </tr>
+
     <a href="jsonservices/phone=${phone.id}">Generate all service</a>
-    <c:forEach items="${services}" var="service">
-        <tr>
-            <th><a href="jsonservice/service=${service.id}">${service.id}</a></th>
-            <th>${service.description}</th>
-            <th>${service.date}</th>
-            <th>${service.annotation}</th>
-            <th>${service.price}</th>
-        </tr> </c:forEach>
+
+  <c:forEach items="${services}" var="service">
+
+      <tr>
+        <th><a href="jsonservice/service=${service.id}">${service.id}</a></th>
+        <th>${service.description}</th>
+        <th>${service.date}</th>
+        <th>${service.annotation}</th>
+        <th>${service.price}</th>
+      </tr>
+  </c:forEach>
+
     <form method="post" action="${phone.id}">
         <p>New issue</p>
         <label for="description">Problem description</label>
@@ -36,7 +42,10 @@ To change this template use File | Settings | File Templates. --%> <%@
         <label for="price">Price of service</label>
         <input type="text" id="price" name="price">
         <input type="hidden" name="phoneId" value=${phone.id}>
-        <input type="submit" name="action" value="Submit"> </form>
+
+        <input type="submit" name="action" value="Submit">
+    </form>
+
 </table>
 </body>
 </html>

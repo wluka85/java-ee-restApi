@@ -25,7 +25,8 @@ public class JsonServlet extends HttpServlet {
         jsonParser = new JSONParser();
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
         ServiceInfo serviceInfo = serviceDAOInterface.getServiceInfo(getServiceId(request));
         List<ServiceInfo> serviceInfoList = new ArrayList<>();

@@ -23,13 +23,13 @@ public class ServiceInfoServlet extends HttpServlet {
         serviceDAOInterface = new ServiceDAOImpl();
     }
 
-    protected void doGet(HttpServletRequest request,
-                         HttpServletResponse response)
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         long phoneId = getServiceId(request);
-
         Phone phone = serviceDAOInterface.getPhone(phoneId);
+
         List<ServiceInfo> serviceInfoList = phone.getServiceHistory();
 
         request.setAttribute("services", serviceInfoList);
@@ -37,11 +37,7 @@ public class ServiceInfoServlet extends HttpServlet {
 
         request.getRequestDispatcher("/WEB-INF/service-info.jsp").forward(request, response);
     }
-    private long getServiceId(HttpServletRequest request) {
-        String pathInfo = request.getPathInfo();
-        String[] pathParts = pathInfo.split("/");
-        return Long.parseLong(pathParts[1]);
-    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Map<String, String> serviceMessages = new HashMap<>();
         // ---------Service info values parsing----------
@@ -57,13 +53,24 @@ public class ServiceInfoServlet extends HttpServlet {
          Long phoneId = Long.parseLong(request.getParameter("phoneId"));
          Phone phone = serviceDAOInterface.getPhone(phoneId);
          if (serviceMessages.isEmpty()) {
-             Integer price = Integer.parseInt(stringPrice);
+            Integer price = Integer.parseInt(stringPrice);
             ServiceInfo serviceInfo = new ServiceInfo(description, new Date(), annotation, price, phone);
             phone.addServiceInfo(serviceInfo);
             serviceDAOInterface.add(serviceInfo);
             serviceDAOInterface.update(phone);
-         }
-         doGet(request, response);
-      //   request.getRequestDispatcher("/WEB-INF/service-info.jsp").forward(request, response);
+        }
+        doGet(request, response);
+        request.getRequestDispatcher("/WEB-INF/service-info.jsp").forward(request, response);
+    }
+    private long getPhoneId (HttpServletRequest request){
+        String pathInfo = request.getPathInfo();
+        String[] pathParts = pathInfo.split("/");
+        return Long.parseLong(pathParts[1]);
+    }
+
+    private long getServiceId(HttpServletRequest request) {
+        String pathInfo = request.getPathInfo();
+        String[] pathParts = pathInfo.split("/");
+        return Long.parseLong(pathParts[1]);
     }
 }
