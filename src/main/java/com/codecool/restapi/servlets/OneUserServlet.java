@@ -26,7 +26,6 @@ public class OneUserServlet extends HttpServlet {
         client = dao.getClient(id);
         List<Phone> phones = client.getPhones();
 
-
         //Start Temporary solution
 
         Set<Phone> newPhoneList = new LinkedHashSet<>();
@@ -39,6 +38,7 @@ public class OneUserServlet extends HttpServlet {
         request.setAttribute("phones", newPhoneList);
         request.getRequestDispatcher("/WEB-INF/user.jsp").forward(request, response);
     }
+
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -69,8 +69,17 @@ public class OneUserServlet extends HttpServlet {
         long id = getClientId(request);
         client = dao.getClient(id);
         List<Phone> phones = client.getPhones();
+
+        //Start Temporary solution
+
+        Set<Phone> newPhoneList = new LinkedHashSet<>();
+        for (Phone phone: phones) {
+            newPhoneList.add(phone);
+        }
+        //EndTemporary solution
+
         request.setAttribute("client", client);
-        request.setAttribute("phones", phones);
+        request.setAttribute("phones", newPhoneList);
         request.getRequestDispatcher("/WEB-INF/user.jsp").forward(request, response);
     }
 

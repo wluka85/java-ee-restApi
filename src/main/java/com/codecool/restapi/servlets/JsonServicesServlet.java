@@ -30,11 +30,7 @@ public class JsonServicesServlet extends HttpServlet {
         List<ServiceInfo> serviceInfoList = phone.getServiceHistory();
         String jsonStr = jsonParser.generateJSONByServiceInfoList(serviceInfoList).toJSONString();
         response.getWriter().write(jsonStr);
-
-
     }
-
-
 
     private long getPhoneId(HttpServletRequest request) {
         String pathInfo = request.getPathInfo();

@@ -32,12 +32,6 @@ public class JsonServlet extends HttpServlet {
         serviceInfoList.add(serviceInfo);
         String jsonStr = jsonParser.generateJSONByServiceInfoList(serviceInfoList).toJSONString();
         response.getWriter().write(jsonStr);
-
-
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 
     private long getServiceId(HttpServletRequest request) {
