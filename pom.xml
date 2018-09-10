@@ -130,6 +130,11 @@
       <artifactId>json-simple</artifactId>
       <version>1.1</version>
     </dependency>
+      <dependency>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-server</artifactId>
+          <version>9.4.6.v20170531</version>
+      </dependency>
   </dependencies>
 
   <build>
@@ -186,22 +191,10 @@
             <artifactId>jetty-maven-plugin</artifactId>
             <version>9.2.2.v20140723</version>
             <!--<version>9.4.7.v20170914</version>-->
-            <!--<configuration>-->
-                <!--<webAppSourceDirectory>src/main/webapp</webAppSourceDirectory>-->
-          <!--</configuration>-->
+            <configuration>
+                <webAppSourceDirectory>src/main/webapp</webAppSourceDirectory>
+          </configuration>
         </plugin>
-
-
-        <plugin>
-          <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-maven-plugin</artifactId>
-            <version>9.2.2.v20140723</version>
-            <!--<version>9.4.7.v20170914</version>-->
-            <!--<configuration>-->
-                <!--<webAppSourceDirectory>src/main/webapp</webAppSourceDirectory>-->
-          <!--</configuration>-->
-        </plugin>
-
 
       </plugins>
     </pluginManagement>

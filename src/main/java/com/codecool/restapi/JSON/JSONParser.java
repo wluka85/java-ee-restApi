@@ -11,65 +11,66 @@ import java.util.List;
 
 public class JSONParser {
 
+    @SuppressWarnings("unchecked")
+    public JSONObject generateJSONByClientList(List<Client> data) {
 
+        JSONObject jsonClients = new JSONObject();
 
-    public JSONObject generateJSONByPhoneList(List<Phone> data){
-        JSONObject jsonObject = new JSONObject();
+        for(Client client : data){
+            JSONArray jsonClient = new JSONArray();
 
-        for(Phone phone : data){
-            JSONArray jsonArray = new JSONArray();
+            jsonClient.add(client.getEmail());
+            for(Phone phone : client.getPhones()){
+                jsonClient.add(phone.getBrand());
+                jsonClient.add(phone.getModel());
+                for(ServiceInfo serviceInfo : phone.getServiceHistory()){
+                    jsonClient.add(serviceInfo.getDescription());
+                    jsonClient.add(serviceInfo.getPrice());
+                    jsonClient.add(serviceInfo.getAnnotation());
 
-            jsonArray.add(phone.getBrand());
-            jsonArray.add(phone.getModel());
-            for(ServiceInfo serviceInfo : phone.getServiceHistory()){
-                jsonArray.add(serviceInfo.getDescription());
-                jsonArray.add(serviceInfo.getPrice());
-                jsonArray.add(serviceInfo.getAnnotation());
-
+                }
             }
-            jsonObject.put(phone.getClient().getName(), jsonArray);
+            jsonClients.put(client.getName(), jsonClient);
         }
-        return jsonObject;
+        return jsonClients;
     }
 
-    public JSONObject generateJSONByServiceInfoList(List<ServiceInfo> data){
+    @SuppressWarnings("unchecked")
+    public JSONObject generateJSONByPhoneList(List<Phone> data ){
+        JSONObject jsonClientPhones = new JSONObject();
 
-        JSONObject jsonObject = new JSONObject();
-        JSONArray jsonArray = new JSONArray();
+        for(Phone phone : data){
+            JSONArray jsonPhone = new JSONArray();
+
+            jsonPhone.add(phone.getBrand());
+            jsonPhone.add(phone.getModel());
+            for(ServiceInfo serviceInfo : phone.getServiceHistory()){
+                jsonPhone.add(serviceInfo.getDescription());
+                jsonPhone.add(serviceInfo.getPrice());
+                jsonPhone.add(serviceInfo.getAnnotation());
+
+            }
+            jsonClientPhones.put(phone.getClient().getName(), jsonPhone);
+        }
+        return jsonClientPhones;
+    }
+
+    @SuppressWarnings("unchecked")
+    public JSONObject generateJSONByServiceInfoList(List<ServiceInfo> data) {
+
+        JSONObject jsonPhoneServices = new JSONObject();
+        JSONArray jsonService = new JSONArray();
 
         Phone phone = data.get(0).getPhone();
 
         for(ServiceInfo serviceInfo : data){
-            jsonArray.add(serviceInfo.getDescription());
-            jsonArray.add(serviceInfo.getPrice());
-            jsonArray.add(serviceInfo.getAnnotation());
+            jsonService.add(serviceInfo.getDescription());
+            jsonService.add(serviceInfo.getPrice());
+            jsonService.add(serviceInfo.getAnnotation());
 
         }
-        jsonObject.put(phone.getBrand() + " " + phone.getModel(), jsonArray);
+        jsonPhoneServices.put(phone.getBrand() + " " + phone.getModel(), jsonService);
 
-        return jsonObject;
-    }
-
-    public JSONObject generateJSONByClientList(List<Client> data){
-
-        JSONObject jsonObject = new JSONObject();
-
-        for(Client client : data){
-            JSONArray jsonArray = new JSONArray();
-
-            jsonArray.add(client.getEmail());
-            for(Phone phone : client.getPhones()){
-                jsonArray.add(phone.getBrand());
-                jsonArray.add(phone.getModel());
-                for(ServiceInfo serviceInfo : phone.getServiceHistory()){
-                    jsonArray.add(serviceInfo.getDescription());
-                    jsonArray.add(serviceInfo.getPrice());
-                    jsonArray.add(serviceInfo.getAnnotation());
-
-                }
-            }
-            jsonObject.put(client.getName(), jsonArray);
-        }
-        return jsonObject;
+        return jsonPhoneServices;
     }
 }
